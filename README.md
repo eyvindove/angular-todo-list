@@ -8,6 +8,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Search & Sort (by date) operations
 - RWD supports
 
+## Live Demo
+
+[Live demo link](https://eyvindove.github.io/angular-todo-list/)
+
 ## Get started
 
 1. Clone this repo or run command below.
