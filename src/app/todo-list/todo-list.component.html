@@ -1,0 +1,95 @@
+<div class="todo-container">
+  <div class="todo-container-top">
+    <h1 class="title">{{ title }}</h1>
+
+    <input
+      class="todo-input"
+      type="text"
+      placeholder="Add new task"
+      autofocus
+      [(ngModel)]="input"
+      (keyup.enter)="onInputKeyupEnter()"
+    />
+
+    <!-- todo list actions -->
+    <div class="todo-list-actions">
+      <div class="search">
+        <input
+          class="todo-search"
+          type="text"
+          placeholder="Search"
+          [(ngModel)]="search"
+          (keyup)="onSearchKeyup()"
+        />
+      </div>
+      <button type="button" (click)="filterTodoList()">
+        Date {{ isAscending ? "↧" : "↥" }}
+      </button>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+
+  <!-- todo list -->
+  @if (visibleItemCount === 0 && !search) {
+  <div class="todo-list--empty">List is empty. Add new task now.</div>
+  } @else if (visibleItemCount === 0 && search) {
+  <div class="todo-list--empty">No relevant search result.</div>
+  } @else {
+  <div class="todo-list">
+    @for (todo of todoList; track todo.date; let index = $index) {
+    <div
+      class="todo-list-item {{ todo.completed ? 'completed' : '' }} {{
+        todo.visible ? '' : 'hidden'
+      }}"
+      (click)="onStatusClick(index)"
+    >
+      <!-- description -->
+      @if (todo.editable) {
+      <input
+        class="item-description"
+        type="text"
+        placeholder="Edit your task"
+        [(ngModel)]="todo.description"
+        (keyup.enter)="onEditClick($event, index)"
+      />
+      } @else {
+      <div class="item-description">{{ todo.description }}</div>
+      }
+
+      <!-- date -->
+      <div class="item-date">
+        {{ todo.date | date : "yyyy-MM-dd hh:mm:ss" }}
+      </div>
+
+      <div class="item-status-and-actions">
+        <!-- status -->
+        <div class="item-status {{ todo.completed ? 'completed' : '' }}">
+          <div>{{ todo.completed ? "Done" : "Todo" }}</div>
+        </div>
+
+        <!-- actions -->
+        <div class="item-actions">
+          <button
+            class="item-actions-edit"
+            type="button"
+            (click)="onEditClick($event, index)"
+          >
+            {{ todo.editable ? "Save" : "Edit" }}
+          </button>
+          <button
+            class="item-actions-delete"
+            type="button"
+            class="{{ todo.editable ? 'disabled' : '' }}"
+            [disabled]="todo.editable"
+            (click)="onDeleteClick($event, index)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

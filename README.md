@@ -1,27 +1,46 @@
-# AngularTodoList
+# Angular Todo List
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
 
-## Development server
+## Basic features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Basic CRUD operations
+- Search & Sort (by date) operations
+- RWD supports
 
-## Code scaffolding
+## Get started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone this repo or run command below.
 
-## Build
+2. Install all dependencies. (uses npm as default)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+npm install
+```
 
-## Running unit tests
+3. Run dev server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm start
+```
 
-## Running end-to-end tests
+4. Run test (or with coverage)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm test
 
-## Further help
+npm run test:coverage
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+5. Enjoy! ☺
+
+## Codebase Architecture
+
+```
+|-- src/
+  |-- app/
+    |-- todo-list/
+      |-- todo-list.component
+    |-- app.component
+    |-- todo.service
+```
