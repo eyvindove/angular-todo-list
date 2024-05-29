@@ -8,7 +8,7 @@
       placeholder="Add new task"
       autofocus
       [(ngModel)]="input"
-      (keyup.enter)="onInputKeyupEnter()"
+      (keyup)="$event.which === 13 ? onInputKeyupEnter() : false"
     />
 
     <!-- todo list actions -->
